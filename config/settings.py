@@ -14,6 +14,8 @@ from pathlib import Path
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+from decouple import config
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,16 +24,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ov#r^^&xv&^0vmc(zj&h_t^$*52@8jicn=%*z*@s-=li!s_p@='
+SECRET_KEY=config('MY_SECRET_KEY', default='fallback-secret-key-for-local-dev')
+# SECRET_KEY=config('MY_SECRET_KEY', default='fallback-secret-key-for-local-dev')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = config("MY_DEBUG", default=True, cast=bool)
+DEBUG=config("MY_DEBUG", default=True, cast=bool)
 
-ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS=config("ALLOWED_HOSTS",default="127.0.0.1,localhost").split(',')
+ALLOWED_HOSTS=config("ALLOWED_HOSTS",default="127.0.0.1,localhost").split(',')
 X_FRAME_OPTIONS = '*'
 CORS_ALLOW_ALL_ORIGINS = True
-CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000/', 'http://0.0.0:3000']
+CSRF_TRUSTED_ORIGINS=config("CSRF_TRUSTED_ORIGINS", default='http://127.0.0.1:8000,http://localhost:3000').split(',')
+# CSRF_TRUSTED_ORIGINS = config("CSRF_TRUSTED_ORIGINS", default='http://127.0.0.1:8000,http://localhost:3000'
+# ).split(',')
 # Application definition
 
 INSTALLED_APPS = [
@@ -155,12 +161,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 cloudinary.config(
-    cloud_name="dfcrjsy5x",
-    api_key="214891289627338",
-    api_secret="kg20PjRo-50I-WnquRjQ2TuyhgI",
+    cloud_name= config("CLOUD_NAME"),
+    api_key= config("CLOUD_API_K"),
+    api_secret= config("CLOUD_API_SECRET"),
     secure=True
 )
-
+# cloudinary.config(
+#     cloud_name="dfcrjsy5x",
+#     api_key="214891289627338",
+#     api_secret="kg20PjRo-50I-WnquRjQ2TuyhgI",
+#     secure=True
+# )
 
 ##
 #

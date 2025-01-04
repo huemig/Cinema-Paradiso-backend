@@ -1,0 +1,8 @@
+env/
+.env/
+thumbs.db
+*.pyc
+*.pyo
+__pycache__/
+
+
