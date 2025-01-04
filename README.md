@@ -6,7 +6,6 @@ This is the backend API for the **Cinema Paradiso** project, built with Django. 
 
 ## **Features**
 - RESTful API built with Django and Django REST Framework (DRF).
-- User authentication and authorization.
 - Movie management: add, update, delete, and retrieve movie information.
 - Integration with Cloudinary for media file uploads.
 - Configurable settings for development and production environments.
@@ -40,5 +39,6 @@ CLOUD_API_SECRET=your_cloudinary_api_secret
 python manage.py migrate
 python manage.py runserver
 
- Or run on replit: https://replit.com/@huemig/Cinema-Paradiso-backend
+ Or run on replit: https://replit.com/@huemig/Cinema-Paradiso-backend 
+ 
 
